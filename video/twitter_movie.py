@@ -8,7 +8,7 @@ import time
 import textwrap
 import pickle as pkl
 from PIL import Image, ImageDraw, ImageFont
-KEY_FILEPATH = "../access.txt"
+KEY_FILEPATH = "../access123.txt"
 
 ##########################################################
 #
@@ -155,7 +155,9 @@ def twitter_movie(num=20):
     frame_gen_thread.join()
 
     #Generate video
-    encode('./images')
+    #encode('./images')
+
+
 
 if __name__ == "__main__":
     start_time = time.time()
