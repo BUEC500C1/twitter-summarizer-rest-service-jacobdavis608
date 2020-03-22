@@ -8,7 +8,7 @@ import time
 import textwrap
 import pickle as pkl
 from PIL import Image, ImageDraw, ImageFont
-KEY_FILEPATH = "../access123.txt"
+KEY_FILEPATH = "../access.txt"
 
 ##########################################################
 #
@@ -43,7 +43,7 @@ def download_and_caption(media, background_size=(1280,720)):
 
                 #caption image
                 d = ImageDraw.Draw(background)
-                font = ImageFont.truetype('./fonts/HelveticaNeue.ttf', 36) #Choose twitter font
+                font = ImageFont.truetype('./video/fonts/HelveticaNeue.ttf', 36) #Choose twitter font
                 tweet_template = "{0}: \n\n{1}"
                 formatted_text = '\n'.join(textwrap.wrap(media[key][0], width=50)) #wrap tweet text
                 d.text((10,10), tweet_template.format(media[key][1], formatted_text), font=font, fill=(255, 255, 255))
@@ -86,7 +86,7 @@ def generate_text_images(text_tweets, im_size=(1280,720)):
         os.mkdir('./images')
     for num in text_tweets.keys():
         img = Image.new('RGB', im_size, color=(29, 161, 242))      #make a background with twitter color
-        font = ImageFont.truetype('./fonts/HelveticaNeue.ttf', 36) #Choose twitter font
+        font = ImageFont.truetype('./video/fonts/HelveticaNeue.ttf', 36) #Choose twitter font
         
         d = ImageDraw.Draw(img)
         formatted_text = '\n'.join(textwrap.wrap(text_tweets[num][0], width=50)) #wrap tweet text
@@ -104,7 +104,7 @@ def load_tweets_pickle():
     with open('sample_tweets.p', 'rb') as pkl_file:
         return pkl.load(pkl_file)
 
-def twitter_movie(num=20):
+def twitter_movie(num=20, tweepy_keys_path=KEY_FILEPATH):
     '''Create twitter feed summary for num tweets. Option to get more tweets from twitter'''
     tokens = []
     try: # Try to find keys
@@ -126,7 +126,9 @@ def twitter_movie(num=20):
         #Use Tweepy API to get the latest "num" tweets
         api = tweepy.API(auth)
 
+        print("Fetching tweets...")
         public_tweets = api.home_timeline(count=num) #get num tweets from timeline    
+        print("Done")
     else:
         public_tweets = load_tweets_pickle()
     
@@ -155,7 +157,7 @@ def twitter_movie(num=20):
     frame_gen_thread.join()
 
     #Generate video
-    #encode('./images')
+    encode('./images')
 
 
 
