@@ -10,3 +10,11 @@
 * Develop simple WEB applications to test your system.
 * Document your REST APIs on your Github
 * KEep your server off until we request it for grading.  We dont want you to waste money.
+
+
+## API documentation and usage
+To use the web api "mytwitterapi". This simple api implements a single get request response that returns an mp4 to the browser as an attachment. The user passes in the url a single parameter, num_tweets, that defines the number of tweets they want to get from the timeline.
+
+An example request looks like this (please use this for testing):
+      http://127.0.0.1:5000/api/get_twitter_summary?num_tweets=5
+

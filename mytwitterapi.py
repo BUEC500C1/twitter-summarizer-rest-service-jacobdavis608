@@ -25,6 +25,4 @@ def api_summary():
 
 if __name__ == "__main__":
     app.run()
-    #num =5 
-    #twitter_movie.twitter_movie(num=num, tweepy_keys_path="../access.txt")
     # request: http://127.0.0.1:5000/api/get_twitter_summary?num_tweets=5

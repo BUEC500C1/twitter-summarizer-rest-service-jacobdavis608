@@ -96,12 +96,12 @@ def generate_text_images(text_tweets, im_size=(1280,720)):
 def save_tweets_pickle(api, num_tweets):
     '''Save the home timeline tweets as a pickle file'''
     tweets = api.home_timeline(count=num_tweets)
-    with open('sample_tweets.p', 'wb') as pkl_file:
+    with open('./video/sample_tweets.p', 'wb') as pkl_file:
         pkl.dump(tweets, pkl_file)
 
 def load_tweets_pickle():
     '''Load tweets from saved file'''
-    with open('sample_tweets.p', 'rb') as pkl_file:
+    with open('./video/sample_tweets.p', 'rb') as pkl_file:
         return pkl.load(pkl_file)
 
 def twitter_movie(num=20, tweepy_keys_path=KEY_FILEPATH):
@@ -158,8 +158,6 @@ def twitter_movie(num=20, tweepy_keys_path=KEY_FILEPATH):
 
     #Generate video
     encode('./images')
-
-
 
 if __name__ == "__main__":
     start_time = time.time()
