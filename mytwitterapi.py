@@ -5,7 +5,7 @@ import zipfile
 import time
 
 app = Flask(__name__)
-app.config["DEBUG"] = True
+#app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
@@ -25,4 +25,3 @@ def api_summary():
 
 if __name__ == "__main__":
     app.run()
-    # request: http://127.0.0.1:5000/api/get_twitter_summary?num_tweets=5
