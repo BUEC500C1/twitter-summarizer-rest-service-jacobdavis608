@@ -73,8 +73,8 @@ def encode(images_path, fps=30, pix_format='yuv420p', threads=4, out_format='mp4
         os.remove('./out.mp4')
     command = [
         'ffmpeg', '-framerate', '1/3', '-i', '{0}/img%d.jpg'.format(images_path), 
-        '-threads', '%d' % threads, '-r', '%d' % fps, '-pix_fmt', '%s' % pix_format, 
-        'out.%s' % out_format
+        '-threads', '%d' % threads, '-r', '%d' % fps, '-pix_fmt', '%s' % pix_format,
+        '-y', 'twitter_summary.%s' % out_format
     ]
     com = ' '.join(command)
     os.system(com)

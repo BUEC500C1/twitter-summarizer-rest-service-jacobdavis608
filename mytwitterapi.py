@@ -1,6 +1,8 @@
-from flask import Flask, escape, request
+from flask import Flask, escape, request, make_response, send_file
 from video import twitter_movie
-
+from io import BytesIO
+import zipfile
+import time
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -14,10 +16,11 @@ def api_summary():
     if 'num_tweets' in request.args:
         num = int(request.args['num_tweets'])
     else:
-        return "Error: No num_tweets field provided"
+        return "<h1>Error:</h1><p>No num_tweets field provided, no specified movie length.</p>"
 
     twitter_movie.twitter_movie(num=num, tweepy_keys_path="../access.txt")
-    return "You requested %s tweets" % num
+    out_path = './twitter_summary.mp4'
+    return send_file(out_path, as_attachment=True)
     
 
 if __name__ == "__main__":
