@@ -16,5 +16,5 @@
 To use the web api "mytwitterapi". This simple api implements a single get request response that returns an mp4 to the browser as an attachment. The user passes in the url a single parameter, num_tweets, that defines the number of tweets they want to get from the timeline.
 
 An example request looks like this (please use this for testing):
-      http://127.0.0.1:5000/api/get_twitter_summary?num_tweets=5
+      {EC2 Address}/api/get_twitter_summary?num_tweets=5
 
